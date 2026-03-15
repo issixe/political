@@ -1,0 +1,49 @@
+# Copyright (c) 2024 SCALE Lab, Brown University
+# Licensed under the MIT License (see LICENSE for details).
+
+from torchtune.data import AlpacaToMessages
+from torchtune.datasets._preference import PreferenceDataset
+from torchtune.datasets._instruct import InstructDataset
+from torchtune.modules.tokenizers import Tokenizer
+
+
+def politune_right(
+    tokenizer: Tokenizer,
+    source: str = "scale-lab/politune-right",
+    train_on_input: bool = False,
+    max_seq_len: int = 1024,
+) -> InstructDataset:
+    return PreferenceDataset(
+        tokenizer=tokenizer,
+        source=source,
+        column_map={
+            "instruction": "prompt",
+            "prompt": "prompt",
+            "chosen": "chosen",
+            "rejected": "rejected"
+        },
+        template=AlpacaInstructTemplate,
+        max_seq_len=max_seq_len,
+        split="train[:100]",
+    )
+
+
+def politune_left(
+    tokenizer: Tokenizer,
+    source: str = "scale-lab/politune-left",
+    train_on_input: bool = False,
+    max_seq_len: int = 1024,
+) -> InstructDataset:
+    return PreferenceDataset(
+        tokenizer=tokenizer,
+        source=source,
+        column_map={
+            "instruction": "prompt",
+            "prompt": "prompt",
+            "chosen": "chosen",
+            "rejected": "rejected"
+        },
+        template=AlpacaInstructTemplate,
+        max_seq_len=max_seq_len,
+        split="train[:100]",
+    )
