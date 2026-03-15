@@ -21,13 +21,12 @@ checkpointer:
 resume_from_checkpoint: False
 save_adapter_weights_only: False
 dataset:
-  _component_: torchtune.datasets.stack_exchange_paired_dataset
+  _component_: torchtune.datasets.preference_dataset
   source: scale-lab/politune-left
   split: train
-  column_map:
-    question: prompt
-    response_j: chosen
-    response_k: rejected
+  message_transform:
+    _component_: torchtune.data.ChosenRejectedToMessages
+    train_on_input: False
 seed: null
 shuffle: True
 batch_size: 1
