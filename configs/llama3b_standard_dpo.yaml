@@ -24,9 +24,11 @@ dataset:
   _component_: torchtune.datasets.preference_dataset
   source: scale-lab/politune-left
   split: train
-  message_transform:
-    _component_: torchtune.data.ChosenRejectedToMessages
-    train_on_input: False
+  train_on_input: False
+  column_map:
+    chosen: chosen
+    rejected: rejected
+    prompt: prompt
 seed: null
 shuffle: True
 batch_size: 1
