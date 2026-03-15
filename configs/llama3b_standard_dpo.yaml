@@ -8,7 +8,7 @@ model:
   lora_alpha: 16
   lora_dropout: 0.0
 tokenizer:
-  _component_: torchtune.models.llama3.llama3_2_tokenizer
+  _component_: torchtune.models.llama3.llama3_tokenizer
   path: /tmp/Llama-3.2-3B-Instruct/original/tokenizer.model
   max_seq_len: 1024
 checkpointer:
