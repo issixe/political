@@ -22,7 +22,7 @@ resume_from_checkpoint: False
 save_adapter_weights_only: False
 dataset:
   _component_: data.politune_dataset.politune_dataset
-  source: scale-lab/politune-left
+  source: scale-lab/politune-right
   split: train
 seed: null
 shuffle: True
